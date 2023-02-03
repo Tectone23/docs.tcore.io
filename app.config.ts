@@ -16,16 +16,16 @@ export default defineAppConfig({
       logo: true,
       showLinkIcon: true,
       exclude: [],
-      fluid: true
+      fluid: true,
     },
     footer: {
       fluid: true,
     },
     github: {
       edit: true,
-      repo: "tcore-docs",
+      repo: "docs.tcore.io",
       branch: "main",
-      owner: "TecTone23"
-    }
+      owner: "TecTone23",
+    },
   },
 });
