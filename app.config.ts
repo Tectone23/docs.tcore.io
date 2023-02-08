@@ -8,6 +8,9 @@ export default defineAppConfig({
       // twitter: 'nuxt_themes',
       github: "TecTone23",
     },
+    main: {
+      fluid: true,
+    },
     aside: {
       level: 0,
       exclude: [],
