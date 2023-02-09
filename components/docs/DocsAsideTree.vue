@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { $URL } from "ufo";
 import type { PropType } from "vue";
 
 const props = defineProps({
@@ -22,7 +21,7 @@ const props = defineProps({
 });
 
 const route = useRoute();
-const config = useDocus();
+const { config } = useDocus();
 
 const collapsedMap = useState(
   `docus-docs-aside-collapse-map-${props.parent?._path || "/"}`,
@@ -44,10 +43,10 @@ const isActive = (link: any) => {
 };
 
 const isCollapsed = (link: any) => {
-  const a: string[] = link.children.map((e: any) => e._path);
   if (link.children) {
     // Directory has been toggled manually, use its state
     if (typeof collapsedMap.value[link._path] !== "undefined") {
+      const a: string[] = link.children.map((e: any) => e._path);
       if (!a.includes(route.path)) {
         return collapsedMap.value[link._path];
       }
@@ -63,9 +62,7 @@ const isCollapsed = (link: any) => {
       return link?.collapsed;
     }
 
-    //@ts-ignore
     if (config?.value?.aside?.collapsed) {
-      //@ts-ignore
       return config.value.aside?.collapsed;
     }
   }
@@ -156,7 +153,7 @@ css({
   '.docs-aside-tree': {
     li: {
       '&.bordered': {
-        borderLeft: '1px solid {elements.border.primary.default}',
+        borderLeft: '1px solid {elements.border.primary.static}',
         '&:hover': {
           borderColor: '{elements.border.primary.hover}'
         },
